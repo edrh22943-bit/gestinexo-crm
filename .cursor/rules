@@ -1,0 +1,23 @@
+# Reglas para el Agente de Gestinexo CRM
+
+## Contexto del Proyecto
+- Plataforma SaaS multi-tenant (multiempresa) para gestión comercial.
+- Stack: Next.js (App Router), TypeScript, Supabase (PostgreSQL + Auth + RLS), Vercel.
+- Canal principal de comunicación: WhatsApp Cloud API.
+
+## Reglas de Seguridad (CRÍTICAS - NUNCA IGNORAR)
+1. **Aislamiento multi-tenant:** Toda tabla con datos de negocio DEBE tener `organization_id` y `business_id`. Toda consulta DEBE filtrar por estos campos. Las políticas RLS son OBLIGATORIAS.
+2. **Nunca** expongas tokens de WhatsApp, claves de API o credenciales en el código del cliente (frontend). Usa variables de entorno.
+3. **Nunca** modifiques producción. Trabaja solo en ramas y abre Pull Requests.
+4. **Nunca** ejecutes migraciones de base de datos sin autorización explícita.
+5. **Idempotencia en webhooks:** Los webhooks DEBEN validar la firma `X-Hub-Signature-256` y ser idempotentes.
+
+## Reglas de Calidad
+- Cada Pull Request DEBE incluir tests (unitarios o de integración) que demuestren que el aislamiento multi-tenant no se rompe.
+- Si un test falla, no abras el PR. Corrige primero.
+- Documenta en el PR: qué se hizo, cómo probarlo, y cualquier decisión técnica.
+
+## Estilo de Código
+- TypeScript estricto (`strict: true`).
+- Nombres en inglés para el código (tablas, variables, funciones), español para comentarios de negocio si es necesario.
+- Usa `snake_case` en la base de datos, `camelCase` en TypeScript.
