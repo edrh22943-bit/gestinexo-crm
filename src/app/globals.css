@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+:root {
+  --gestinexo-ink: #0f766e;
+  --gestinexo-surface: #f8fafc;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--gestinexo-surface);
+  color: #0f172a;
+  font-family:
+    "Segoe UI",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
