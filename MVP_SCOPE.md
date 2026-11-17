@@ -1,15 +1,15 @@
 # Alcance del MVP
 
-## Lo que SÍ está incluido en el MVP (Fase 1)
-- [ ] Autenticación con Supabase Auth (email/password).
+## Lo que SÍ está incluido en el MVP (Fase 1–2)
+- [x] Autenticación con Supabase Auth (email/password). (Fase 2 UI + proxy)
 - [x] Modelo multi-tenant: organizaciones, negocios, miembros. (schema + RLS Fase 1)
 - [x] RLS en todas las tablas de negocio. (migración + tests de aislamiento)
-- [ ] CRUD de contactos (con campos básicos: nombre, teléfono, email).
-- [ ] CRUD de embudos (pipelines) y etapas.
-- [ ] CRUD de oportunidades (leads) vinculadas a contactos y etapas.
+- [x] CRUD de contactos (con campos básicos: nombre, teléfono, email). (Fase 2)
+- [ ] CRUD de embudos (pipelines) y etapas. (seed al registro; UI CRUD pendiente)
+- [x] CRUD de oportunidades (leads) vinculadas a contactos y etapas. (Fase 2)
 - [ ] Integración básica con WhatsApp: recibir webhook, enviar mensaje de texto.
 - [ ] Registro básico de mensajes enviados/recibidos (para el módulo de costos).
-- [ ] Dashboard simple: conteo de contactos y oportunidades.
+- [x] Dashboard simple: conteo de contactos y oportunidades. (Fase 2)
 
 ## Lo que NO está incluido (no construir todavía)
 - ❌ Inteligencia Artificial (asistente, clasificación, resúmenes).

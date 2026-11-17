@@ -1,7 +1,9 @@
-/**
- * Phase 0 technical base only — no product UI yet.
- * Route groups `(auth)` and `(dashboard)` are reserved for later phases.
- */
-export default function Home() {
-  return null;
+import { redirect } from "next/navigation";
+import { getAuthUser } from "@/lib/auth/session";
+
+export const instant = false;
+
+export default async function Home() {
+  const user = await getAuthUser();
+  redirect(user ? "/dashboard" : "/login");
 }

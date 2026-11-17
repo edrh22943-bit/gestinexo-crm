@@ -18,3 +18,9 @@ Este archivo sirve para que el Agente registre las decisiones importantes que to
 | 2026-11-17 | Tabla `pipeline_stages` además de `pipelines` | Solo `pipelines` + stage como texto en leads | MVP exige leads vinculados a etapas; etapas con `organization_id`+`business_id` y RLS |
 | 2026-11-17 | Tests RLS con store in-memory que refleja policies (+ asserts del SQL) | Solo tests contra Supabase live / Docker Postgres | CI sin proyecto Supabase ni migraciones aplicadas; no se ejecutan migraciones sin autorización |
 | 2026-11-17 | Clientes `@supabase/ssr` (browser/server) + admin service-role separado | Un solo cliente supabase-js | Cookies de sesión en App Router; service role nunca en frontend |
+| 2026-11-17 | Next.js 16 `proxy.ts` (no `middleware.ts`) para refresh de sesión Auth | Mantener middleware deprecated | Convención actual de Next 16.4; misma función de refresh + guards |
+| 2026-11-17 | Bootstrap de tenant en registro vía service-role (`bootstrapTenantForUser`) | Insertar org/business solo con sesión anon+RLS; RPC SECURITY DEFINER | RLS de `businesses` exige `is_org_member` antes de existir membresía (chicken-egg); admin solo en server |
+| 2026-11-17 | Al registrarse se crea embudo "Ventas" + etapas por defecto | UI CRUD de pipelines en Fase 2; etapas libres en leads | Leads requieren `pipeline_id`/`stage_id`; MVP prioriza contactos/oportunidades |
+| 2026-11-17 | `organizationId`/`businessId` siempre desde membresía (`users`), nunca del form | Aceptar tenant ids del cliente | Evita que un usuario escriba en otro negocio aunque RLS falle o se omita |
+| 2026-11-17 | Rutas CRM con `export const instant = false` (Cache Components) | Suspense + `use cache: private` en toda la UI | MVP autenticado entero es request-time; opt-out evita bloqueos de build |
+| 2026-11-17 | Una membresía activa = primer `users` row del auth user | Selector multi-negocio en UI | Alcance Fase 2; multi-negocio ya modelado en schema |
