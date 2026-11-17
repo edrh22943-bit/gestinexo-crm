@@ -2,8 +2,8 @@
 
 ## Lo que SÍ está incluido en el MVP (Fase 1)
 - [ ] Autenticación con Supabase Auth (email/password).
-- [ ] Modelo multi-tenant: organizaciones, negocios, miembros.
-- [ ] RLS en todas las tablas de negocio.
+- [x] Modelo multi-tenant: organizaciones, negocios, miembros. (schema + RLS Fase 1)
+- [x] RLS en todas las tablas de negocio. (migración + tests de aislamiento)
 - [ ] CRUD de contactos (con campos básicos: nombre, teléfono, email).
 - [ ] CRUD de embudos (pipelines) y etapas.
 - [ ] CRUD de oportunidades (leads) vinculadas a contactos y etapas.
